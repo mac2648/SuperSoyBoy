@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 6623558005897796833}
   - component: {fileID: 7437496245172062437}
   - component: {fileID: 6633878135830332328}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SoyBoy
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -189,8 +189,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 2534921250334001411}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc88fc639cc3da142b97e9d6b683614e, type: 3}
+  m_Script: {fileID: 11500000, guid: 43becaf83e431374e94c43ddf2bd9808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 14
   accel: 6
+  isJumping: 0
+  jumpSpeed: 8
+  jumpDurationThreshold: 0.25
+  airAccel: 3
+  jump: 14
+  runClip: {fileID: 0}
+  jumpClip: {fileID: 0}
+  slideClip: {fileID: 0}

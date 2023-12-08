@@ -31,26 +31,41 @@
 using UnityEngine;
 using System.Collections;
 
-public class CameraLerpToTransform : MonoBehaviour
+public class Hazard : MonoBehaviour
 {
-    public Transform camTarget;
-    public float trackingSpeed;
-    public float cameraZDepth = -10f;
-    public float minX;
-    public float minY;
-    public float maxX;
-    public float maxY;
+    public GameObject playerDeathPrefab;
+    public AudioClip deathClip;
+    public Sprite hitSprite;
+    private SpriteRenderer spriteRenderer;
 
-    void FixedUpdate()
+    void Awake()
     {
-        if (camTarget != null)
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    // Use this for initialization
+    void Start () {
+	
+	}
+
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (coll.transform.tag == "Player")
         {
-            var newPos = Vector2.Lerp(transform.position, camTarget.position, Time.deltaTime * trackingSpeed);
-            var camPosition = new Vector3(newPos.x, newPos.y, -10f);
-            var v3 = camPosition;
-            var clampX = Mathf.Clamp(v3.x, minX, maxX);
-            var clampY = Mathf.Clamp(v3.y, minY, maxY);
-            transform.position = new Vector3(clampX, clampY, -10f);
+            var audioSource = GetComponent<AudioSource>();
+            if (audioSource != null && deathClip != null)
+            {
+                audioSource.PlayOneShot(deathClip);
+            }
+            Instantiate(playerDeathPrefab, coll.contacts[0].point, Quaternion.identity);
+            spriteRenderer.sprite = hitSprite;
+            Destroy(coll.gameObject);
+            GameManager.instance.RestartLevel(1.25f);
         }
     }
+
+    // Update is called once per frame
+    void Update () {
+	
+	}
 }

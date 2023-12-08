@@ -30,27 +30,43 @@
 
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
-public class CameraLerpToTransform : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    public Transform camTarget;
-    public float trackingSpeed;
-    public float cameraZDepth = -10f;
-    public float minX;
-    public float minY;
-    public float maxX;
-    public float maxY;
+    public static GameManager instance;
 
-    void FixedUpdate()
+    void Awake()
     {
-        if (camTarget != null)
+        if (instance == null)
         {
-            var newPos = Vector2.Lerp(transform.position, camTarget.position, Time.deltaTime * trackingSpeed);
-            var camPosition = new Vector3(newPos.x, newPos.y, -10f);
-            var v3 = camPosition;
-            var clampX = Mathf.Clamp(v3.x, minX, maxX);
-            var clampY = Mathf.Clamp(v3.y, minY, maxY);
-            transform.position = new Vector3(clampX, clampY, -10f);
+            instance = this;
         }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
     }
+
+    // Use this for initialization
+    void Start () {
+	
+	}
+
+    public void RestartLevel(float delay)
+    {
+        StartCoroutine(RestartLevelDelay(delay));
+    }
+
+    private IEnumerator RestartLevelDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene("Game");
+    }
+
+    // Update is called once per frame
+    void Update () {
+	
+	}
 }

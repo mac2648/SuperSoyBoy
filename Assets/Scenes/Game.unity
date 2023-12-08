@@ -1075,21 +1075,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoyBoy
       objectReference: {fileID: 0}
-    - target: {fileID: 6633878135830332328, guid: 03cf446a12cfc69448c41c305924a8a5,
-        type: 3}
-      propertyPath: runClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 165d34f726d50f249946eef95f804e77, type: 3}
-    - target: {fileID: 6633878135830332328, guid: 03cf446a12cfc69448c41c305924a8a5,
-        type: 3}
-      propertyPath: jumpClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 5397d8f0c36a76f4c9f6dcf720cf78b8, type: 3}
-    - target: {fileID: 6633878135830332328, guid: 03cf446a12cfc69448c41c305924a8a5,
-        type: 3}
-      propertyPath: slideClip
-      value: 
-      objectReference: {fileID: 8300000, guid: b27cd1c888b94524c92722e6a15eb294, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
